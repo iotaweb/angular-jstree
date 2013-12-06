@@ -4,6 +4,7 @@
 
 angular.module('treeDemo', [
     'ng',
+    'ngRoute',
     'treeDemo.controllers',
     'treeDemo.directives'
 ])

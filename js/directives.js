@@ -13,24 +13,24 @@ angular.module('treeDemo.directives', [])
         restrict: 'A',
         require: '?ngModel',
         scope: {
+            apiBase: '@',
             apiRoot: '@',
             selectedNode: '=',
-            nodeChanged: '='
+            selectedNodeChanged: '='
         },
         link: function(scope, element, attrs) {
-        
+
             var treeElement = $(element);
             var tree = treeElement.jstree({
                 'json_data': {
                     'ajax': {
                         'url' : function(node){
                             if (node === -1) { // root of tree
-                                return scope.apiRoot + 'root.json';
+                                var file = scope.apiRoot;
                             } else {
-                                var subid = $(node).attr('subid');
-                                console.log(subid);
-                                return scope.apiRoot + subid + '.json';
+                                var file = $(node).attr('subid');
                             }
+                            return scope.apiBase + file + '.json';
                         },
                         'data': function(n) {
                              return {
@@ -45,19 +45,25 @@ angular.module('treeDemo.directives', [])
                 },
                 'plugins': ['themes', 'json_data', 'ui']
             });
-        
+
             tree.bind('select_node.jstree', function() {
-                        
+
+            $timeout(function() {
+
                 scope.selectedNode = {
                     id: treeElement.jstree('get_selected').attr('id'),
                     text: treeElement.find('.jstree-clicked').text(),
                     subid: treeElement.jstree('get_selected').attr('subid')
                 };
-                
-                if (scope.nodeChanged) {
-                   scope.nodeChanged(scope.selectedNode);
-                }        
-                
+
+                if (scope.selectedNodeChanged) {
+                    $timeout(function() {
+
+                        scope.selectedNodeChanged(scope.selectedNode);
+                    });
+                }
+            });
+
             });
         }
     };

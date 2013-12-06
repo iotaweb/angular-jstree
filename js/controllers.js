@@ -9,14 +9,14 @@ angular.module('treeDemo.controllers', [])
 
 .controller('TreeCtrl', function($scope) {
 
-    $scope.nodeChanged = function(node) {
+    $scope.nodeChanged = function(newNode) {
     
         // do something when node changed
     
-        console.log(node.id);
+        console.log(newNode.id);
         
-        if (node.subid) {
-            console.log('  %s', node.subid);
+        if (newNode.subid) {
+            console.log('  %s', newNode.subid);
         }
     };
 });
