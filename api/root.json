@@ -1,0 +1,40 @@
+[
+    {
+        "data" : "Node 1",
+        "title": "Node 1",
+        "isFolder": true,
+        "children": [],
+        "state": "closed",
+        "attr": {
+            "id": "n1",
+            "subid": "n1.1"
+        }
+    },
+    {
+        "data" : "Node 2",
+        "title": "Node 2",
+        "isFolder": true,
+        "children": [
+            {
+                "data" : "Node 2.1",
+                "title": "Node 2.1",
+                "isFolder": false,
+                "attr": {
+                    "id": "n2.1"
+                }
+            }
+        ],
+        "state": "closed",
+        "attr": {
+            "id": "n2"
+        }
+    },
+    {
+        "data" : "Node 3",
+        "title": "Node 3",
+        "isFolder": false,
+        "attr": {
+            "id": "n3"
+        }
+    }
+]

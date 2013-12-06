@@ -1,0 +1,37 @@
+<div class="row" ng-controller="TreeCtrl">
+
+    <div class="col-md-6">
+    
+        <h3>Tree</h3>
+    
+        <div jstree selected-node="node" node-changed="nodeChanged" api-root="/api/"></div>          
+                      
+    </div>
+
+    <div class="col-md-6">
+    
+        <h3>Selected Node</h3>
+        
+        <p ng-hide='node'>No node selected</p>
+        
+        <p ng-show='node'>Node: {{node.id}} <span ng-show='node.subid'> (subtree {{node.subid}})</span></p>
+        
+        <h3>API</h3>
+    
+        <ul>
+            <li>
+                <a href="/api/root.json" target="frame">/api/root.json</a>
+            </li>
+            <li>
+                <a href="/api/n1.1.json" target="frame">/api/n1.1.json</a>
+            </li>
+            <li>
+                <a href="/api/n1.1.1.json" target="frame">/api/n1.1.1.json</a>
+            </li>
+        </ul>
+            
+        <iframe name="frame" width="100%" height="300" frameborder="0" class="well"></iframe>
+    
+     </div>
+    
+</div>
