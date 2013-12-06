@@ -32,6 +32,17 @@ angular.module('treeDemo.directives', [])
                             }
                             return scope.apiBase + file + '.json';
                         },
+/*
+                        // This is more like how you would implement it for real...
+                        'url' : function(node){
+                            if (node === -1) { // root of tree
+                                var pid = '';  // no parent
+                            } else {
+                                var pid = $(node).attr('id’); // parent id
+                            }
+                            return scope.apiBase + ‘?parent=' + pid + '&levels=2';
+                        },
+*/                        
                         'data': function(n) {
                              return {
                                  'operation': 'get_children',
